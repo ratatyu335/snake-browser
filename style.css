@@ -4,7 +4,7 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
-  background: linear-gradient(to bottom right, #00cc00, #00ff00);
+  background: linear-gradient(to bottom right, 	#FF00FF, #00ffff);
 }
 
 canvas {
