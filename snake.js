@@ -11,20 +11,20 @@ let score = 0;
 let direction = 'right';
 
 function draw() {
-    // Очистка холста
+    // ГЋГ·ГЁГ±ГІГЄГ  ГµГ®Г«Г±ГІГ 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Рисование змейки
-    ctx.fillStyle = '#00F';
+    // ГђГЁГ±Г®ГўГ Г­ГЁГҐ Г§Г¬ГҐГ©ГЄГЁ
+    ctx.fillStyle = '#008000';
     snake.forEach(segment => {
         ctx.fillRect(segment.x * tileSize, segment.y * tileSize, tileSize, tileSize);
     });
 
-    // Рисование яблока
+    // ГђГЁГ±Г®ГўГ Г­ГЁГҐ ГїГЎГ«Г®ГЄГ 
     ctx.fillStyle = '#F00';
     ctx.fillRect(apple.x * tileSize, apple.y * tileSize, tileSize, tileSize);
 
-    // Отображение счета
+    // ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ Г±Г·ГҐГІГ 
     ctx.fillStyle = '#000';
     ctx.font = '20px Arial';
     ctx.fillText('Score: ' + score, 10, 30);
@@ -48,19 +48,19 @@ function move() {
             break;
     }
 
-    // Проверка на столкновение со стеной
+    // ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ Г±Г® Г±ГІГҐГ­Г®Г©
     if (head.x < 0 || head.x >= gridSize || head.y < 0 || head.y >= gridSize) {
         gameOver();
         return;
     }
 
-    // Проверка на столкновение с собой
+    // ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ Г± Г±Г®ГЎГ®Г©
     if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
         gameOver();
         return;
     }
 
-    // Проверка на поедание яблока
+    // ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЇГ®ГҐГ¤Г Г­ГЁГҐ ГїГЎГ«Г®ГЄГ 
     if (head.x === apple.x && head.y === apple.y) {
         score += 1;
         spawnApple();
@@ -77,7 +77,7 @@ function spawnApple() {
         y: Math.floor(Math.random() * gridSize),
     };
 
-    // Проверка, чтобы яблоко не появилось на змейке
+    // ГЏГ°Г®ГўГҐГ°ГЄГ , Г·ГІГ®ГЎГ» ГїГЎГ«Г®ГЄГ® Г­ГҐ ГЇГ®ГїГўГЁГ«Г®Г±Гј Г­Г  Г§Г¬ГҐГ©ГЄГҐ
     while (snake.some(segment => segment.x === apple.x && segment.y === apple.y)) {
         apple = {
             x: Math.floor(Math.random() * gridSize),
@@ -122,6 +122,6 @@ function gameLoop() {
     draw();
 }
 
-// Инициализация игры
+// Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї ГЁГЈГ°Г»
 spawnApple();
 setInterval(gameLoop, 100);
